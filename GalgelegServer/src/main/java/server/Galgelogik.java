@@ -1,4 +1,4 @@
-/* Galgelogik klassen er henter fra
+package server;/* server.Galgelogik klassen er henter fra
  *      https://github.com/nordfalk/Galgeleg/blob/master/src/galgeleg/Galgelogik.java
  */
 import java.io.BufferedReader;
@@ -129,7 +129,7 @@ public class Galgelogik {
 
 
     public static String hentUrl(String url) throws IOException {
-        System.out.println("Henter data fra " + url);
+        System.out.println("Henter brugerautorisation.data fra " + url);
         BufferedReader br = new BufferedReader(new InputStreamReader(new URL(url).openStream()));
         StringBuilder sb = new StringBuilder();
         String linje = br.readLine();
@@ -146,7 +146,7 @@ public class Galgelogik {
      */
     public void hentOrdFraDr() throws Exception {
         String data = hentUrl("https://dr.dk");
-        //System.out.println("data = " + data);
+        //System.out.println("brugerautorisation.data = " + brugerautorisation.data);
 
         data = data.substring(data.indexOf("<body")). // fjern headere
                 replaceAll("<.+?>", " ").toLowerCase(). // fjern tags
@@ -160,8 +160,8 @@ public class Galgelogik {
                 replaceAll(" [a-zæøå] "," "). // fjern 1-bogstavsord
                 replaceAll(" [a-zæøå][a-zæøå] "," "); // fjern 2-bogstavsord
 
-        System.out.println("data = " + data);
-        System.out.println("data = " + Arrays.asList(data.split("\\s+")));
+        System.out.println("brugerautorisation.data = " + data);
+        System.out.println("brugerautorisation.data = " + Arrays.asList(data.split("\\s+")));
         muligeOrd.clear();
         muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
@@ -180,7 +180,7 @@ public class Galgelogik {
     public void hentOrdFraRegneark(String sværhedsgrader) throws Exception {
         String id = "1RnwU9KATJB94Rhr7nurvjxfg09wAHMZPYB3uySBPO6M";
 
-        System.out.println("Henter data som kommasepareret CSV fra regnearket https://docs.google.com/spreadsheets/d/"+id+"/edit?usp=sharing");
+        System.out.println("Henter brugerautorisation.data som kommasepareret CSV fra regnearket https://docs.google.com/spreadsheets/d/"+id+"/edit?usp=sharing");
 
         String data = hentUrl("https://docs.google.com/spreadsheets/d/" + id + "/export?format=csv&id=" + id);
         int linjeNr = 0;
