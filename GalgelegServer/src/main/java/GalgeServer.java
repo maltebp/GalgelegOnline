@@ -15,7 +15,7 @@ public class GalgeServer extends UnicastRemoteObject implements GalgeServerI {
     // TODO: Create proper try-catch for exception
     public static void main(String[] args) throws RemoteException, MalformedURLException {
 
-        System.out.printf("Starter server som:%s\n", URL);
+        System.out.printf("Starter server som: %s\n", URL);
 
         LocateRegistry.createRegistry(PORT);
         GalgeServerI server = new GalgeServer();
@@ -27,9 +27,9 @@ public class GalgeServer extends UnicastRemoteObject implements GalgeServerI {
         Scanner scan = new Scanner(System.in);
         String input;
         while(true){
-            System.out.print("\n>");
+            System.out.print(">");
             input = scan.nextLine();
-            if( input.equals("stop") ){
+            if( input.equals("stop") || input.equals("exit") ){
                 break;
             }
             if( input.equals("print") ){
