@@ -1,6 +1,5 @@
 package server;
 
-import spil.ISpil;
 import brugerautorisation.transport.rmi.Brugeradmin;
 import brugerautorisation.data.Bruger;
 
@@ -52,7 +51,6 @@ public class GalgeServer extends UnicastRemoteObject implements IGalgeServer {
                     System.out.printf("Spil (%d):\n", logikMap.size());
                     for ( String spillerNavn : logikMap.keySet() ) {
                         System.out.printf("%s\n", spillerNavn, logikMap.get(spillerNavn));
-                        /*System.out.printf("%s:  %s", spiller.fornavn, spilLogik.get(spiller));*/
                     }
                 }
             }
@@ -68,7 +66,7 @@ public class GalgeServer extends UnicastRemoteObject implements IGalgeServer {
             ba = (Brugeradmin) Naming.lookup("rmi://javabog.dk/brugeradmin");
             logikMap.remove(brugernavn);
             logikMap.put(brugernavn, new Galgelogik());
-            return ba.hentBruger(brugernavn, kode);// ba.hentBruger(brugernavn, kode);
+            return ba.hentBruger(brugernavn, kode);
         } catch (RemoteException e) {
             System.out.println("Fejl ved login (RemoteException): " + e.getMessage());
             throw new RemoteException("Kunne ikke oprette forbindelse til autorisationsserver");
@@ -83,15 +81,6 @@ public class GalgeServer extends UnicastRemoteObject implements IGalgeServer {
         }
     }
 
-    /*@Override
-    public void nytSpil(Bruger spiller) {
-        spilLogik.put(this, new Galgelogik());
-    }
-*//*
-
-    @Override
-    public void nytSpil(Bruger spiller) {
-    }*/
 
     @Override
     public GaetResultat gaetBogstav(Bruger spiller, char bogstav) {
