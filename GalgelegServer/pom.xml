@@ -14,7 +14,7 @@
     <artifactId>server</artifactId>
     
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-16</project.build.sourceEncoding>
     </properties>
 
     <build>

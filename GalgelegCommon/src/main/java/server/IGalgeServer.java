@@ -10,7 +10,7 @@ import java.util.List;
 public interface IGalgeServer extends Remote {
 
     // Server settings
-    int     PORT = 1099;
+    int     PORT = 13337;
     String  PATH = "galgeleg";
     String  DOMAIN = "dist.saluton.dk";
     String  URL  = String.format("rmi://%s:%d/%s", DOMAIN, PORT, PATH);
