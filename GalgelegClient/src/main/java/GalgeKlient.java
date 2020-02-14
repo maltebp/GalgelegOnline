@@ -10,7 +10,7 @@ public class GalgeKlient {
 
     public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
 
-        System.out.println("Forbinder til server...");
+        System.out.println("Forbinder til server: " + GalgeServerI.URL);
         GalgeServerI server = (GalgeServerI) Naming.lookup(GalgeServerI.URL);
         System.out.println("Forbundet til server!");
 
